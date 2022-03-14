@@ -6,7 +6,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Hello World with Java in Ubuntu");
         /**
          * Hallar el mayor número del vector [9,18,25,31,14,12,9]de forma recursiva
          */
@@ -19,9 +18,18 @@ public class Main {
         int[] vectorWithoutCombinations = {2,1,8,7};
         ArrayList<Integer> resultCombinations = findCombinations(vectorWithoutCombinations, 0, 0, new ArrayList<Integer>());
         for (int i = 0; i < resultCombinations.size(); i++) {
-            System.out.print(resultCombinations.get(i) + " ");
-
+            //System.out.print(resultCombinations.get(i) + " ");
         }
+
+        /**
+         * Hallar la cantidad de numeros pares de un arreglo [9,15,24,18,14,35,6,7,9,105,1320,4503]
+         */
+        int[] vectorNumbers = {9,15,24,18,14,35,6,7,9,105,1320,4503};
+        System.out.println(findPairNumber(vectorNumbers, 0));
+    }
+    private static int findPairNumber(int[] vectorNumbers, int pos) {
+        if(pos == vectorNumbers.length - 1  ) return vectorNumbers[pos] % 2 == 0 ? 1 : 0;
+        else return (vectorNumbers[pos] % 2 == 0 ? 1 : 0) + findPairNumber(vectorNumbers,pos + 1);
     }
     public static ArrayList<Integer> findCombinations(int[] vector, int pos1, int pos2, ArrayList<Integer> result){
         if(pos2 == vector.length) return  result;
