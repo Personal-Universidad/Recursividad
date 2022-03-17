@@ -2,7 +2,7 @@ package uq.jjos;
 
 import java.util.ArrayList;
 
-public class Main {
+public class RecursividadDirecta {
 
     public static void main(String[] args) {
 
@@ -25,8 +25,25 @@ public class Main {
          * Hallar la cantidad de numeros pares de un arreglo [9,15,24,18,14,35,6,7,9,105,1320,4503]
          */
         int[] vectorNumbers = {9,15,24,18,14,35,6,7,9,105,1320,4503};
-        System.out.println(findPairNumber(vectorNumbers, 0));
+        //System.out.println(findPairNumber(vectorNumbers, 0));
+
+        /**
+         * Retornar la serie 1 - 1/2 + 1/3 - 1/4. ... +- 1/n
+         */
+        System.out.println(returnSerie(5));
     }
+    private static String returnSerie(int n){
+        if(n <= 0){
+            return  "La serie no se puede calcula";
+        }else{
+            if(n == 1){
+                return  "1";
+            }else {
+                return  returnSerie(n -1 ) + (n % 2 == 0  ? " - 1/"+n : " + 1/"+n);
+            }
+        }
+    }
+
     private static int findPairNumber(int[] vectorNumbers, int pos) {
         if(pos == vectorNumbers.length - 1  ) return vectorNumbers[pos] % 2 == 0 ? 1 : 0;
         else return (vectorNumbers[pos] % 2 == 0 ? 1 : 0) + findPairNumber(vectorNumbers,pos + 1);
