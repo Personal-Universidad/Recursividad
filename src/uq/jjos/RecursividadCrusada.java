@@ -5,8 +5,36 @@ public class RecursividadCrusada {
         /**
          * Calcular el promedio de n hasta m donde determine la cantidad de n Primos
          */
-        System.out.print(calcularPromedioPrimos(5,10,0,0));
+        //System.out.print(calcularPromedioPrimos(5,10,0,0));
 
+        /**
+         * Sumar los numeros abudantes de un arreglo [5,9,3,8,16,28,10,23]
+         */
+        int [] arreglo = {28};
+        System.out.println(sumatoriaNumerosAbundantes(arreglo, 0, 0));
+    }
+    public static int sumatoriaNumerosAbundantes(int[] arreglo, int pos, int sumatoriaAbudantes) {
+        if(pos == arreglo.length) {
+            return sumatoriaAbudantes;
+        }else {
+            if(esNumeroAbundante(arreglo[pos], 1, 0)) {
+                return sumatoriaNumerosAbundantes(arreglo, pos + 1, sumatoriaAbudantes + arreglo[pos]);
+            }else {
+                return sumatoriaNumerosAbundantes(arreglo, pos + 1, sumatoriaAbudantes);
+            }
+        }
+    }
+
+    public static  boolean esNumeroAbundante(int numero, int pos, int  sumatoria) {
+        if(numero == pos) {
+            return  numero > sumatoria;
+        }else {
+            if (numero % pos == 0) {
+                return esNumeroAbundante(numero, pos  + 1 , sumatoria  + pos);
+            }else{
+                return esNumeroAbundante(numero, pos + 1 , sumatoria);
+            }
+        }
     }
 
     public static boolean esPrimo(int numero, int divisor, int divisores ){
