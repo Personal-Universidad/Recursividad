@@ -21,7 +21,7 @@ public class Talleres {
          * Texto "LOREM IPsuM dolor sit atmet.\n CANCIONES gtaDDSZP"
          */
         String texto = "LOREM IPsuM dolor sit atmet.\n CANCIONES gtaDDSZP";
-        //System.out.println(obtenerMinusculaCadena(texto, 0));
+        System.out.println(obtenerMinusculaCadena(texto, 0));
     }
 
     public static String obtenerMinusculaCadena(String cadena, int pos) {
@@ -33,8 +33,7 @@ public class Talleres {
     }
 
     public static boolean esMinuscula(char letra) {
-        return !Character.isUpperCase(letra);
-
+        return Character.isLetter(letra) && !Character.isUpperCase(letra);
     }
 
     public static int suma(int i) {
