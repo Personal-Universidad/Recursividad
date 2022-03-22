@@ -47,13 +47,38 @@ public class Talleres {
          */
 
         String vocalesYConsonantes = "ensayo";
-        System.out.println(separarVocalesYConsonantes(vocalesYConsonantes,0));
+        //System.out.println(separarVocalesYConsonantes(vocalesYConsonantes,0));
         /**
          * 7. Determine si una matriz es o no simétrica. Una matriz es simétrica si es cuadrada,
          * los elementos por encima de la diagonal son iguales a los elementos por debajo en forma de espejo.
+         * 1,1,2,3
+         * 1,1,4,5
+         * 2,4,1,9
+         * 4,5,9,1
          */
+
+        int[][] matriz = {{1,1,2,3,5},{1,1,4,5},{2,4,1,9},{3,5,9,1}};
+        int[][] matrizSimetrica = new int[matriz.length][matriz.length];
+        System.out.println(validarMatrizSimetrica(matriz,  0,0));
+
     }
 
+
+    public static String validarMatrizSimetrica(int[][] matriz, int fila, int columna){
+        if(columna == matriz.length){
+            return  "Es simetrica";
+        }else{
+            if(fila < matriz[columna].length){
+                if(fila < matriz.length && matriz[fila][columna] == matriz[columna][fila]){
+                    return validarMatrizSimetrica(matriz, fila +1 , columna);
+                }else {
+                    return  "No es simetrica";
+                }
+            }else {
+                return validarMatrizSimetrica(matriz,0, columna + 1);
+            }
+        }
+    }
     public static String separarVocalesYConsonantes(String palabra, int pos){
         if(palabra.length() * 2  ==  pos) {
             return "";
